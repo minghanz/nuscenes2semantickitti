@@ -1,3 +1,14 @@
+# Conversion tool for nuScenes to SemanticKITTI
+This repo is modified from the official nuScenes devkit. It allows the conversion of nuScenes dataset to SemanticKITTI format for semantic, 3D panoptic, and 4D panoptic segmentation tasks. The tool does not generate the `voxels` folder, thus cannot be used for the semantic scene completion task. 
+
+File `export_semantickitti.py` is added in `python-sdk/nuscenes/scripts/` folder. See `python-sdk/nuscenes/scripts/run_nusc2skitti.sh` for the commands to run. 
+
+After the conversion, copy the `semantic-kitti(nuscenes).yaml` under the root folder of converted dataset (the same level as the `sequence` folder) and rename it to `semantic-kitti.yaml`. It contains information about the annotated classes and the dataset splits. The script to generate the yaml file is not included, but the information is mostly from `python-sdk/nuscenes/eval/lidarseg/utils.py` (except the `content` item, which is generated using [SemanticKITTI devkit](https://github.com/minghanz/semantic-kitti-api-nusc)). 
+
+You can check out `python-sdk/tutorials/nuscenes_lidarseg_panoptic_tutorial.ipynb` to get yourself familiar with the nuscenes dataset, specifically for segmentation tasks. 
+
+Below are the original readme of nuScenes devkit. 
+
 # nuScenes devkit
 Welcome to the devkit of the [nuScenes](https://www.nuscenes.org/nuscenes) and [nuImages](https://www.nuscenes.org/nuimages) datasets.
 ![](https://www.nuscenes.org/public/images/road.jpg)
